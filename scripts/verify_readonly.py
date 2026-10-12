@@ -34,14 +34,14 @@ def main() -> None:
             results.append((name, False, str(e)[:200]))
 
     def should_succeed(name: str, fn) -> None:
-        check(f"✓ {name}", fn)
+        check(f"[ALLOW] {name}", fn)
 
     def should_fail(name: str, fn) -> None:
         try:
             fn()
-            results.append((f"✗ {name}", False, "EXPECTED FAILURE but succeeded"))
+            results.append((f"[DENY] {name}", False, "EXPECTED FAILURE but succeeded"))
         except Exception as e:
-            results.append((f"✓ {name} (correctly denied)", True, str(e)[:200]))
+            results.append((f"[DENY] {name} (correctly denied)", True, str(e)[:200]))
 
     # ── Tests that SHOULD succeed ───────────────────────────
 
@@ -134,9 +134,9 @@ def main() -> None:
 
     print("=" * 70)
     if all_passed:
-        print("ALL CHECKS PASSED ✓")
+        print("ALL CHECKS PASSED [OK]")
     else:
-        print("SOME CHECKS FAILED ✗")
+        print("SOME CHECKS FAILED [FAIL]")
         sys.exit(1)
 
 
