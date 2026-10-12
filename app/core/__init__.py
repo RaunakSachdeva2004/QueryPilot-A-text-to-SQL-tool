@@ -1,0 +1,1 @@
+# QueryPilot core package
